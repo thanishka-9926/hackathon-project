@@ -2,52 +2,109 @@
 <html>
 <head>
     <title>Smart Student Assistant</title>
+
     <style>
         body {
             font-family: Arial;
             background: #0f172a;
             color: white;
             text-align: center;
-            padding: 50px;
         }
 
-        h1 { color: #22c55e; }
+        .container {
+            margin-top: 100px;
+        }
 
-        .btn {
-            padding: 10px 20px;
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
             background: #22c55e;
             border: none;
             color: white;
             cursor: pointer;
-            margin-top: 20px;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        ul {
+            list-style: none;
         }
     </style>
 </head>
 
 <body>
 
+<!-- LOGIN PAGE -->
+<div id="login" class="container">
+    <h1>🔐 Login</h1>
+    <input type="text" id="username" placeholder="Enter your name"><br>
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="container">
     <h1>🚀 Smart Student Assistant</h1>
+    <p id="welcome"></p>
 
-    <p>An AI-based system to help students manage tasks and study smarter.</p>
+    <h2>📋 Add Task</h2>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
 
-    <h2>💡 Features</h2>
-    <ul>
-        <li>✔ Task reminders</li>
-        <li>✔ Study planner</li>
-        <li>✔ Smart suggestions</li>
-    </ul>
+    <ul id="taskList"></ul>
 
-    <button class="btn" onclick="chat()">💬 Ask Assistant</button>
+    <h2>🤖 AI Assistant</h2>
+    <button onclick="ai()">Ask AI</button>
+</div>
 
-    <script>
-        function chat() {
-            let user = prompt("What do you need help with?");
-            alert("AI Suggestion: Start with your most important task first!");
-        }
-    </script>
+<script>
+function login() {
+    let name = document.getElementById("username").value;
 
-    <h2>👩‍💻 Team</h2>
-    <p>Tanishka and Team</p>
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    document.getElementById("login").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    document.getElementById("welcome").innerText = "Welcome, " + name + "!";
+}
+
+function addTask() {
+    let task = document.getElementById("taskInput").value;
+
+    if (task === "") return;
+
+    let li = document.createElement("li");
+    li.innerText = "✔ " + task;
+
+    document.getElementById("taskList").appendChild(li);
+
+    document.getElementById("taskInput").value = "";
+}
+
+function ai() {
+    let input = prompt("What do you need help with?");
+
+    if (!input) return;
+
+    let response = "Start with your most important task first.";
+
+    if (input.toLowerCase().includes("study")) {
+        response = "Try 25 min focus + 5 min break (Pomodoro).";
+    } else if (input.toLowerCase().includes("exam")) {
+        response = "Revise key topics and practice questions.";
+    }
+
+    alert("AI Suggestion: " + response);
+}
+</script>
 
 </body>
 </html>
