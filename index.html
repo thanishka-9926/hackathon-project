@@ -10,8 +10,17 @@
             text-align: center;
             padding: 50px;
         }
+
         h1 { color: #22c55e; }
-        ul { list-style: none; }
+
+        .btn {
+            padding: 10px 20px;
+            background: #22c55e;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 
@@ -19,17 +28,23 @@
 
     <h1>🚀 Smart Student Assistant</h1>
 
-    <p>This project helps students manage tasks, deadlines, and study schedules using smart automation.</p>
+    <p>An AI-based system to help students manage tasks and study smarter.</p>
 
     <h2>💡 Features</h2>
     <ul>
-        <li>✔ Task reminder system</li>
+        <li>✔ Task reminders</li>
         <li>✔ Study planner</li>
-        <li>✔ Simple and clean UI</li>
+        <li>✔ Smart suggestions</li>
     </ul>
 
-    <h2>🛠️ Tech Used</h2>
-    <p>HTML, CSS, JavaScript</p>
+    <button class="btn" onclick="chat()">💬 Ask Assistant</button>
+
+    <script>
+        function chat() {
+            let user = prompt("What do you need help with?");
+            alert("AI Suggestion: Start with your most important task first!");
+        }
+    </script>
 
     <h2>👩‍💻 Team</h2>
     <p>Tanishka and Team</p>
